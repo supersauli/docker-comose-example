@@ -10,10 +10,14 @@ processors:
 
 
 exporters:
-  otlp:
-    endpoint: 127.0.0.1:4317
-    tls:
-      insecure: true       
+  debug:
+    verbosity: detailed
+  zipkin:
+      endpoint: "http://192.168.1.40:9411/api/v2/spans"
+  otlp/jaeger:
+      endpoint: '192.168.1.40:4317'
+      tls:
+        insecure: true
 
 extensions:
   health_check:
@@ -26,13 +30,13 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlp]
+      exporters: [debug,zipkin,otlp/jaeger]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlp]
+      exporters: []
     logs:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlp]
+      exporters: []
 
