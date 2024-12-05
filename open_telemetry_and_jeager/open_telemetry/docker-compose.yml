@@ -6,12 +6,13 @@ services:
      - ./config.yaml:/etc/otelcol-contrib/config.yaml
     ports: 
      - 1888:1888
-     - 28888:8888
      - 28889:8889
      - 13133:13133
      - 14317:14317
      - 24318:14318
-     - 45679:55679 
+     - 45679:55679
+     - 7889:7889  # Prometheus metrics exposed by the Collector
+
     restart: unless-stopped
 
 

@@ -12,3 +12,10 @@ docker-compose up -d
 ```
 
 
+zipkin trace 服务
+地址 
+http://192.168.1.40:9411/
+
+jaeger trace 服务
+地址
+http://192.168.1.40:16686/
