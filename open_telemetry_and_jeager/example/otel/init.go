@@ -19,7 +19,13 @@ func Init(serverName string) {
 	if err != nil {
 		return
 	}
+
 	//shutdownFuncs = append(shutdownFuncs, tracerProvider.Shutdown)
 	otel.SetTracerProvider(tracerProvider)
 
+	meterProvider, err := newMeterProvider()
+	if err != nil {
+		return
+	}
+	otel.SetMeterProvider(meterProvider)
 }

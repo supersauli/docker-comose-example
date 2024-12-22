@@ -1,10 +1,10 @@
-version: '3'
+
 services:
   jaeger:
-    image: jaegertracing/all-in-one:latest
+    image: registry.cn-hangzhou.aliyuncs.com/official_image/all-in-one:latest
     container_name: jaeger
     ports:
-      - "16686:16686" # Jaeger UI
+      - "16686:16686" # Jaeger :
       - "4317:4317"   # OTLP gRPC
       - "4318:4318"   # OTLP HTTP
       - "14268:14268" # Jaeger HTTP Collector

@@ -1,7 +1,8 @@
 version: '3'
 services:
   otel-collector: 
-    image: otel/opentelemetry-collector-contrib
+    image: registry.cn-hangzhou.aliyuncs.com/official_image/opentelemetry-collector-contrib
+    
     volumes: 
      - ./config.yaml:/etc/otelcol-contrib/config.yaml
     ports: 

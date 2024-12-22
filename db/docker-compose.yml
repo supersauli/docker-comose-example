@@ -1,0 +1,34 @@
+ 
+services:
+  redis:
+    image: registry.cn-hangzhou.aliyuncs.com/official_image/redis:latest
+    container_name: redis
+    command: ["redis-server", "--requirepass", "123456"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  mysql:
+    image: registry.cn-hangzhou.aliyuncs.com/official_image/mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: game
+      MYSQL_USER: sauli
+      MYSQL_PASSWORD: sauli
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - mysql-network
+
+volumes:
+  redis-data:
+  mysql-data:
+  
+networks:
+  mysql-network:
+    driver: bridge  # 使用桥接网络
